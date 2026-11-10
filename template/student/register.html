@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .registration-card {
+            background-color: #4dbbe8;
+            width: 100%;
+            max-width: 550px;
+            padding: 30px 25px;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .registration-card h2 {
+            text-align: center;
+            color: #2b4560;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            min-width: 0;
+        }
+
+        label {
+            display: block;
+            color: #1e3954;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 13px;
+            outline: none;
+            background-color: #ffffff;
+        }
+
+        input::placeholder {
+            color: #888;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #1e3954;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .radio-option input {
+            accent-color: #0056b3;
+            cursor: pointer;
+        }
+
+        .file-input-wrapper {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            font-size: 13px;
+            color: #555;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .warning-section {
+            text-align: center;
+            margin: 25px 0 15px;
+            color: #2b4560;
+        }
+
+        .warning-text {
+            color: #e53935;
+            font-weight: bold;
+            font-size: 12px;
+            display: inline;
+        }
+
+        .instruction-text {
+            font-size: 14px;
+            color: #1e3954;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .btn-scan {
+            width: 100%;
+            background-color: #2eaf65;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-scan:hover {
+            background-color: #279656;
+        }
+
+        .btn-scan:disabled {
+            background-color: #888;
+            cursor: not-allowed;
+        }
+
+        #cameraSection {
+            display: none;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        #video {
+            width: 100%;
+            max-width: 400px;
+            background: #222;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        #status {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #1e3954;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 480px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="registration-card">
+
+    <h2>Student Registration</h2>
+
+    <form id="registrationForm">
+
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName"
+                   placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="tel" id="contactNumber" name="contactNumber"
+                       placeholder="Enter your contact number"
+                       pattern="[0-9]{10}" maxlength="10" required>
+            </div>
+
+            <div class="form-group">
+                <label for="residentialAddress">Residential Address</label>
+                <input type="text" id="residentialAddress" name="address"
+                       placeholder="Enter your residential address" required>
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label for="arrivalStop">Arrival Stop</label>
+                <input type="text" id="arrivalStop" name="arrivalStop"
+                       placeholder="Enter your arrival stop" required>
+            </div>
+
+            <div class="form-group">
+                <label for="destinationStop">Destination Stop</label>
+                <input type="text" id="destinationStop" name="destinationStop"
+                       placeholder="Enter your destination stop" required>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Bus Pass Validity</label>
+
+            <div class="radio-group">
+
+                <label class="radio-option">
+                    <input type="radio" name="validityOption"
+                           value="1 Day" checked>
+                    1 Day
+                </label>
+
+                <label class="radio-option">
+                    <input type="radio" name="validityOption"
+                           value="3 Months">
+                    3 Months
+                </label>
+
+                <label class="radio-option">
+                    <input type="radio" name="validityOption"
+                           value="6 Months">
+                    6 Months
+                </label>
+
+            </div>
+
+            <input type="hidden" id="busPassValidity"
+                   name="busPassValidity">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="paymentReceipt">Payment Receipt Upload</label>
+
+            <div class="file-input-wrapper">
+                <input type="file" id="paymentReceipt"
+                       name="paymentReceipt"
+                       accept=".pdf,application/pdf" required>
+            </div>
+
+        </div>
+
+        <div class="warning-section">
+
+            <p class="instruction-text">
+                <span class="warning-text">
+                    WARNING: Make sure the student registering scans the face
+                </span>
+                <br>
+                Please follow the instructions after clicking on the scan button.
+            </p>
+
+        </div>
+
+        <div id="cameraSection">
+
+            <p class="instruction-text">
+                Look directly at the camera. Please keep your face visible.
+            </p>
+
+            <video id="video" autoplay playsinline muted></video>
+            <canvas id="canvas" hidden></canvas>
+
+            <p id="cameraProgress" class="instruction-text">
+                Preparing camera...
+            </p>
+
+        </div>
+
+        <button type="submit" class="btn-scan" id="scanButton">
+            Scan
+        </button>
+
+        <p id="status" role="status"></p>
+
+    </form>
+
+</div>
+
+<script>
+
+    const form = document.getElementById("registrationForm");
+    const video = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const cameraSection = document.getElementById("cameraSection");
+    const cameraProgress = document.getElementById("cameraProgress");
+    const scanButton = document.getElementById("scanButton");
+    const status = document.getElementById("status");
+
+    let cameraStream = null;
+
+    function wait(milliseconds) {
+        return new Promise(resolve => setTimeout(resolve, milliseconds));
+    }
+
+    function stopCamera() {
+        if (cameraStream) {
+            cameraStream.getTracks().forEach(track => track.stop());
+            cameraStream = null;
+        }
+
+        video.srcObject = null;
+    }
+
+    form.addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        if (!form.reportValidity()) {
+            return;
+        }
+
+        const receipt = document.getElementById("paymentReceipt").files[0];
+
+        if (!receipt || !receipt.name.toLowerCase().endsWith(".pdf")) {
+            status.textContent = "Please upload a PDF payment receipt.";
+            return;
+        }
+
+        const selectedValidity =
+            document.querySelector('input[name="validityOption"]:checked');
+
+        if (!selectedValidity) {
+            status.textContent = "Please select bus pass validity.";
+            return;
+        }
+
+        document.getElementById("busPassValidity").value =
+            selectedValidity.value;
+
+        scanButton.disabled = true;
+        status.textContent = "Requesting camera permission...";
+
+        try {
+
+            if (!navigator.mediaDevices ||
+                !navigator.mediaDevices.getUserMedia) {
+                throw new Error("Camera is not supported by this browser.");
+            }
+
+            cameraSection.style.display = "block";
+
+            cameraStream = await navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: "user",
+                    width: { ideal: 640 },
+                    height: { ideal: 480 }
+                },
+                audio: false
+            });
+
+            video.srcObject = cameraStream;
+
+            await new Promise(resolve => {
+                video.onloadedmetadata = resolve;
+            });
+
+            await video.play();
+
+            const faceImages = [];
+
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            const context = canvas.getContext("2d");
+
+            for (let i = 0; i < 10; i++) {
+
+                context.drawImage(
+                    video,
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+                const imageData = canvas.toDataURL("image/jpeg", 0.85);
+
+                faceImages.push(imageData);
+
+                cameraProgress.textContent =
+                    "Capturing face images: " + (i + 1) + " / 10";
+
+                if (i < 9) {
+                    await wait(500);
+                }
+            }
+
+            cameraProgress.textContent = "10 face images captured.";
+
+            status.textContent = "Uploading registration details...";
+
+            const formData = new FormData(form);
+
+            formData.append("faceImages", JSON.stringify(faceImages));
+
+            const response = await fetch("/capture", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || "Registration failed.");
+            }
+
+            status.textContent =
+                result.message || "Registration successful!";
+
+            form.reset();
+
+            cameraSection.style.display = "none";
+            cameraProgress.textContent = "";
+            
+        } catch (error) {
+
+            status.textContent = "Error: " + error.message;
+
+        } finally {
+
+            stopCamera();
+            scanButton.disabled = false;
+
+        }
+
+    });
+
+    window.addEventListener("beforeunload", stopCamera);
+
+</script>
+
+</body>
+</html>

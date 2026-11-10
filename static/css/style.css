@@ -1,0 +1,148 @@
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    color: #fff;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar .logo img {
+    height: 50px;
+    width: auto;
+}
+
+/* Main Content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-top: 60px;
+}
+
+.button-wrapper {
+    display: flex;
+    gap: 50px;
+}
+
+.button {
+    text-decoration: none;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: white;
+}
+
+.button img {
+    height: 80px;
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.admin-student-btn {
+    padding: 40px; /* Add more padding for larger buttons */
+    font-size: 1.5rem; /* Increase text size */
+    width: 250px; /* Define a larger width */
+    height: 250px; /* Define a larger height */
+}
+
+.admin-student-icon {
+    height: 150px; /* Larger icon size */
+    width: 150px;
+}
+
+.admin-student-forms{
+    background-color: rgb(77, 191, 229);
+    width: auto;
+}
+
+.body-verification {
+    background-color: #f8f9fa; /* Light background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+#camera {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.verification-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Fill the entire viewport height */
+}
+
+#camera-container {
+    position: relative;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    display: inline-block;
+
+}
+
+#video {
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    background: black;
+}
+
+#verificationStatus {
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        text-align: center;
+        transition: color 0.3s ease;
+}
+
+#scanButton {
+    margin-top: 10px;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+    display: none;
+}
